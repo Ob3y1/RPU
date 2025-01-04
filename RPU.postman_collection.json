@@ -1,0 +1,713 @@
+{
+	"info": {
+		"_postman_id": "f904227e-adc2-4df3-9741-707cd546bba0",
+		"name": "RPU",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36595562"
+	},
+	"item": [
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "Employee Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"identifier\": \"+963923456789\",\r\n    \"password\": \"111w\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/employeeLogin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employeeLogin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employee Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 12|B5VgS9XxSF0xtfBVzgMW6UZp0H5HxxTIEZZR0wQI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/employeeLogout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employeeLogout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employee  questions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 10|jnazKujAPuUukJZxp79YLQakfnftd6IJY99nUtCk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/questions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"questions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employee  question info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 10|jnazKujAPuUukJZxp79YLQakfnftd6IJY99nUtCk",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/questions/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"questions",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employee mark",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 10|jnazKujAPuUukJZxp79YLQakfnftd6IJY99nUtCk",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/questions/7/mark-frequent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"questions",
+								"7",
+								"mark-frequent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employee remove mark",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 10|jnazKujAPuUukJZxp79YLQakfnftd6IJY99nUtCk",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/questions/1/remove-frequent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"questions",
+								"1",
+								"remove-frequent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employee  answer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 10|jnazKujAPuUukJZxp79YLQakfnftd6IJY99nUtCk",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"answer\": \"\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/questions/7/answer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"questions",
+								"7",
+								"answer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"دلوفان\",\r\n    \"phone_number\": \"0964925100\",\r\n    \"email\": \"a@example.com\",\r\n    \"birth_date\": \"1990-01-01\",\r\n    \"password\": \"111q\",\r\n    \"nationality\": \"US\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"identifier\": \"0911111111\",\r\n    \"password\": \"111e\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 7|rbAMMZY3GSUKH2u31NdL9jq9riMzR8UW7Ve3FZOH",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 8|ArNDMzzdpsYum70tZUqxTsednl2uYJklUbmBCY23",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/user-profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user-profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user_info",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 11|3HxuhCM29RddnNWFcgNVk56M40B5TsKOAlvb6mIl",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"phone_number\": \"\",\r\n    \"email\": \"\",\r\n    \"birth_date\": \"1990-01-01\",\r\n    \"password\": \"\",\r\n    \"nationality\": \"\",\r\n    \"default_payment_method_id\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/user-profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user-profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Universities",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 11|3HxuhCM29RddnNWFcgNVk56M40B5TsKOAlvb6mIl",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/universities",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"universities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Specializations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 11|3HxuhCM29RddnNWFcgNVk56M40B5TsKOAlvb6mIl",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/universities/2/specializations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"universities",
+								"2",
+								"specializations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 11|3HxuhCM29RddnNWFcgNVk56M40B5TsKOAlvb6mIl",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/pay",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"pay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Requests",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 11|3HxuhCM29RddnNWFcgNVk56M40B5TsKOAlvb6mIl",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "university_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "specialization_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "r_type_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "certificate_country",
+									"value": "Syria ",
+									"type": "text"
+								},
+								{
+									"key": "total",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "personal_id",
+									"type": "file",
+									"src": "/D:/شغل/Dlo-project/Screenshot 2024-12-31 205737.png"
+								},
+								{
+									"key": "Bachelors_certificate",
+									"type": "file",
+									"src": "/D:/شغل/Dlo-project/photo_2024-11-18_16-02-51.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/requests",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"requests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get requests",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 11|3HxuhCM29RddnNWFcgNVk56M40B5TsKOAlvb6mIl",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/requests",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"requests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 11|3HxuhCM29RddnNWFcgNVk56M40B5TsKOAlvb6mIl",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Result",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 11|3HxuhCM29RddnNWFcgNVk56M40B5TsKOAlvb6mIl",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"specialization\":\"طب بشري\",\r\n    \"location\":\"ALTAL\"\r\n}\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User questions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 11|3HxuhCM29RddnNWFcgNVk56M40B5TsKOAlvb6mIl",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/user-questions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user-questions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User frequent-questions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 11|3HxuhCM29RddnNWFcgNVk56M40B5TsKOAlvb6mIl",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/frequent-questions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"frequent-questions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User submit-question",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 11|3HxuhCM29RddnNWFcgNVk56M40B5TsKOAlvb6mIl",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"question\": \"are you gay?\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/submit-question",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"submit-question"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
