@@ -11,6 +11,130 @@ use App\Models\Payment_method;
 class AuthController extends Controller
 {
 
+    //admin 
+    //admin 
+    //admin 
+    //admin 
+    //admin 
+    //admin 
+    //admin 
+    //admin 
+    //admin 
+    //admin 
+    //admin 
+
+    public function showAdminLogin()
+    {
+        return view('login'); 
+    }
+
+    public function adminLogin(Request $request)
+    {
+        $validated = $request->validate([
+            'identifier' => 'required',
+            'password' => 'required|string',
+        ]);
+        $identifier = $request->identifier;
+
+        // التحقق ما إذا كان الإدخال بريد إلكتروني أم رقم هاتف
+        if (filter_var($identifier, FILTER_VALIDATE_EMAIL)) {
+            // إذا كان بريدًا إلكترونيًا
+            $user = User::where('email', $identifier)->first();
+        } elseif (preg_match('/^\d+$/', $identifier)) {
+            // إذا كان رقم هاتف
+            if (substr($identifier, 0, 1) === '0') {
+                $formattedNumber = '+963' . substr($identifier, 1);
+            } else {
+                $formattedNumber = $identifier;
+            }
+            $user = User::where('phone_number', $formattedNumber)->first();
+        } else {
+            return redirect()->back()->withErrors([
+                'identifier' => 'Invalid identifier format. Must be a valid email or phone number.',
+            ]);
+        }
+        // تحقق من وجود المستخدم وكلمة المرور
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return redirect()->back()->withErrors([
+                'identifier' => 'Invalid credentials',
+            ]);
+        }
+
+        // التحقق من أن المستخدم هو مسؤول (Admin)
+        if ($user->role_id !== 1) { // role_id = 1 يشير إلى مسؤول
+            return redirect()->back()->withErrors([
+                'identifier' => 'Access denied. You do not have admin privileges.',
+            ]);
+        }
+
+        // تسجيل الدخول باستخدام Auth
+        Auth::login($user);
+
+        // إعادة التوجيه إلى لوحة التحكم
+        return redirect()->route('dashboard')->with('success', 'Login successful');
+    }
+    public function showAdminProfile()
+    {
+        $admin = Auth::user();
+        $localNumber = '0' . substr($admin->phone_number, 4);
+        return view('profile', compact('admin','localNumber'));
+    }
+
+    public function updateAdminProfile(Request $request)
+    {
+        $admin = Auth::user();
+        $id=Auth::user()->id;
+        $phoneNumber = $request->input('phone_number');
+        if (substr($phoneNumber, 0, 1) === '0') {
+            $formattedNumber = '+963' . substr($phoneNumber, 1);
+        } else {
+            $formattedNumber = $phoneNumber;
+        }
+        $request->merge(['phone_number' => $formattedNumber]);
+
+        $request->validate([
+            'name' => 'nullable|string|max:20',
+            'phone_number' => 'nullable|string|unique:users,phone_number,' . $id, 
+            'email' => 'nullable|email|unique:users,email,' . $id, 
+            'birth_date' => 'nullable|date',
+            'password' => 'nullable|string', 
+            'nationality' => 'nullable|string|max:50'
+        ]);
+
+        if ($request->has('name')) {
+            $admin->name = $request->input('name');
+        }
+        if ($request->has('email')) {
+            $admin->email = $request->input('email');
+        }
+        if ($request->has('password') && !empty($request->input('password'))) {
+            $admin->password = Hash::make($request->input('password'));
+        }
+        if ($request->has('phone_number')) {
+            $identifier=$request->input('phone_number');
+            if (substr($identifier, 0, 1) === '0') {
+                $formattedNumber = '+963' . substr($identifier, 1);
+            } else {
+                $formattedNumber = $identifier;
+            }
+            $admin->phone_number = $formattedNumber;
+        }
+        if ($request->has('birth_date')) {
+            $admin->birth_date = $request->input('birth_date');
+        }
+        if ($request->has('nationality')) {
+            $admin->nationality = $request->input('nationality');
+        }
+
+        $admin->save();
+
+        return back()->with('success', 'Profile updated successfully');
+    }
+    public function adminLogout()
+    {
+        Auth::logout(); // تسجيل الخروج
+        return redirect()->route('loginForm')->with('success', 'Logged out successfully');
+    }
     //user   
     //user
     //user

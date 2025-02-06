@@ -43,35 +43,35 @@ class UserController extends Controller
     }
     public function search(Request $request)
     {
-        // الحصول على القيم المدخلة من المستخدم
-        $location = $request->input('location');
-        $specialization = $request->input('specialization');
-    
-        // الاستعلام الأساسي مع شروط ديناميكية
+        // الحصول على القيم المدخلة من المستخدم (كمصفوفات)
+        $locations = $request->input('locations', []); // مواقع متعددة
+        $specializations = $request->input('specializations', []); // تخصصات متعددة
+
+        // الاستعلام الأساسي
         $query = University::query();
-    
-        // البحث بناءً على الموقع إذا تم تقديمه
-        if ($location) {
-            $query->where('location', 'LIKE', '%' . $location . '%');
+
+        // البحث بناءً على أكثر من موقع (إذا وُجدت قيم)
+        if (!empty($locations)) {
+            $query->whereIn('location', $locations);
         }
-    
-        // البحث بناءً على التخصص إذا تم تقديمه
-        if ($specialization) {
-            $query->whereHas('specializationsPerUniversity.specialization', function ($subQuery) use ($specialization) {
-                $subQuery->where('name', 'LIKE', '%' . $specialization . '%');
+
+        // البحث بناءً على أكثر من تخصص (إذا وُجدت قيم)
+        if (!empty($specializations)) {
+            $query->whereHas('specializationsPerUniversity.specialization', function ($subQuery) use ($specializations) {
+                $subQuery->whereIn('name', $specializations);
             });
         }
-    
+
         // جلب النتائج مع التخصصات
-        $universities = $query->get();
-    
+        $universities = $query->with('specializationsPerUniversity.specialization')->get();
+
         // إرجاع النتائج
         return response()->json([
             'success' => true,
             'data' => $universities,
         ]);
     }
-    
+
     public function getUniversities()
     {
         $universities = University::all();
@@ -155,16 +155,19 @@ class UserController extends Controller
         }
        
             $validated = $request->validate([
-                'university_id' => 'required|exists:universities,id', 
-                'specialization_id' => 'required|exists:specializations,id', 
+                'university' => 'required|exists:universities,name', 
+                'specialization' => 'required|exists:specializations,name', 
                 'r_type_id' => 'required|exists:r_types,id', 
                 'certificate_country' => 'required|string|in:Syria,Other',
                 'total' => 'required|numeric',
                 'personal_id' => 'required|file|mimes:jpeg,png,jpg,pdf|max:2048', // صورة الهوية
                 'Bachelors_certificate' => 'required|file|mimes:jpeg,png,jpg,pdf|max:2048', // صورة شهادة البكالوريا
             ]);
-            $unis = Specializations_Per_University::where('university_id', $validated['university_id'])
-            ->where('specialization_id', $validated['specialization_id'])
+
+            $university=University::where('name',$validated['university'])->first();
+            $specialization=Specialization::where('name',$validated['specialization'])->first();
+            $unis = Specializations_Per_University::where('university_id',$university->id )
+            ->where('specialization_id',$specialization->id )
             ->first();
 
             if (!$unis) {

@@ -1,0 +1,111 @@
+.sidebar{
+    width: 280px;
+    transition: 0.5s;
+}
+.small-sidebar{
+    width: 75px;
+    transition: 1s;
+}
+
+.menu::before{
+    font-size: 1rem;
+    transform: scale(1.5);
+}
+.myButton{
+    background: #0d6efd;
+}
+.myButton:hover{
+    border: 1px solid rgb(151,162,175);
+}
+
+.small-sidebar .myButton{
+    display: none;
+    transition: 1s;
+}
+.doera {
+    padding: 5px;
+    background-color: #0d6efd;
+    border-radius: 50%;
+  }
+.small-sidebar .doera:hover{
+    background-color: #ffffff;
+    transition: all 0.5s;
+    padding: 2px;
+}
+.small-sidebar .sidebar-text{
+    display: none; 
+    transition: 1s;
+}
+.nav-link:hover{
+    background-color: #757575;
+}
+.info {
+    height: 300px;
+    width: 250px;
+    box-shadow: 16px 14px 20px #0000008c;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    display: block;
+    overflow: hidden;
+    margin: 30px auto;
+    top: 60px;
+}
+.info img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 1s;
+}
+
+.info .caption {
+    position: absolute;
+    top: 100%;
+    height: 300px;
+    width: 250px;
+    background: linear-gradient(rgba(0, 132, 255, 0.362), rgba(0, 0, 0, 0.895));
+    transition: 0.7s;
+    text-align: center;
+    margin-left: -20px;
+}
+
+.info:hover .caption {
+    top: 0px;
+}
+.info:hover img {
+    transform: scale(1.2);
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+ }
+  
+  .form-signin .form-floating:focus-within {
+    z-index: 2;
+  }
+  
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 auto;
+}
+.status-indicator.active {
+    background-color: green;
+}
+.status-indicator.inactive {
+    background-color: red;
+}
