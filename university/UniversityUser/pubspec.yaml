@@ -1,0 +1,39 @@
+name: university
+description: "A new Flutter project."
+
+# منع نشر المشروع
+publish_to: 'none'
+
+# رقم الإصدار
+version: 1.0.0+1
+
+# البيئة المطلوبة لـ Dart SDK
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+# الاعتمادات الرئيسية
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  image_picker: ^0.8.5+3
+  permission_handler: ^10.0.0
+  dio: ^5.0.0
+  flutter_bloc: ^8.0.0
+  shared_preferences: ^2.2.3
+  url_launcher: ^6.0.10
+  html: ^0.15.0
+  http: ^0.13.4
+  http_parser: ^4.0.0
+  file_picker: ^5.2.2
+  universal_io: ^2.0.4
+# الاعتمادات الخاصة بالتطوير والاختبار
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+# إعدادات Flutter
+flutter:
+  uses-material-design: true
+  assets:
+  - image/
